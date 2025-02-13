@@ -16,87 +16,36 @@
             Console.WriteLine("Hello, Type a four digit number:"); //starter code for students
             int x = Convert.ToInt32(Console.ReadLine()); //starter for students
             //YOUR CODE GOES HERE....
-            Console.Writeline(ascendingNumber(x));
+            Console.WriteLine(ascendingNumber(x));
 
 
 
         }
         static string ascendingNumber(int number)
         {
-            string firstnumber = "";
-            string secondnumber = "";
-            string thirdnumber = "";
-            string fourthnumber = "";
-            string numberAscending = "";
-            string numberString = number.ToString();
-            for(int i = 0; i < 4; i++)
+           string numberAsString = number.ToString();
+            char[] chars = numberAsString.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
             {
-                if (i == 0)
-                {
-                   firstnumber = numberString[i];
-                }
-                else if(i == 1)
-                {
-                    if (firstnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        secondnumber = firstnumber;
-                        firstnumber = numberString[i];
-                    }
-                    else
-                    {
-                        secondnumber = numberString[i];
-                    }
-                }
-                else if(i == 2)
-                {
-                    if(firstnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        thirdnumber = secondnumber;
-                        secondnumber = firstnumber;
-                        firstnumber = numberString[i];
-                    }
-                    else if(secondnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        thirdnumber = secondnumber;
-                        secondnumber = numberString[i];
-                    }
-                    else
-                    {
-                        thirdnumber = numberString[i];
-                    }
-
-                }
-                else if(i == 3)
-                {
-                    if (firstnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        fourthnumber = thirdnumber;
-                        thirdnumber = secondnumber;
-                        secondnumber = firstnumber;
-                        firstnumber = numberString[i];
-                    }
-                    else if (secondnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        fourthnumber= thirdnumber;
-                        thirdnumber = secondnumber;
-                        secondnumber = numberString[i];
-                    }
-                    else if (thirdnumber.ToInt32() > numberString[i].ToInt32())
-                    {
-                        fourthnumber = thirdnumber;
-                        thirdnumber = numberString[i];
-                    }
-                    else
-                    {
-                        fourthnumber = numberString[i];
-                    }
-
-
-                }
+                Console.WriteLine(chars[i]);
             }
-            numberAscending = firstnumber + secondnumber + thirdnumber + fourthnumber;
-            return numberAscending;
+            bool swapsMade = false;
+            bool endloop = false;
+            char temporary = ' ';
+            while(endloop == false)
+            {
+                swapsMade = false;
+                for(int i = 0;i < chars.Length;i++) {
+                    if (chars[i] > chars[i + 1])
+                    {
+                        temporary = chars[i];
+                        chars[i] = chars[i + 1];
+                        chars[i+1] = temporary;
+                        swapsMade = true;
+                    }
+            }
 
+            return numberAsString;
         }
     }
 }
